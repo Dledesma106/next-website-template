@@ -21,3 +21,4 @@ export { default as CardFooter } from './CardFooter';
 
 // Utility Components
 export { default as Badge } from './Badge';
+export { default as SocialIcon } from './SocialIcons';

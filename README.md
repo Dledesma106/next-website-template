@@ -58,24 +58,28 @@ Una plantilla completa de sitio web construida con Next.js que permite la gesti�
 ## 📁 Estructura del Proyecto
 
 ```
-src/
-├── app/                    # Next.js App Router
-│   ├── (public)/          # Rutas públicas del sitio
-│   ├── (admin)/           # Rutas del backoffice
-│   ├── api/               # API Routes
-│   │   └── graphql/       # Endpoint GraphQL
-│   └── globals.css        # Estilos globales
-├── components/            # Componentes reutilizables
-│   ├── ui/               # Componentes base del sistema de diseño
-│   ├── public/           # Componentes específicos del sitio público
-│   └── admin/            # Componentes del backoffice
-├── lib/                  # Utilidades y configuraciones
-│   ├── prisma.ts         # Cliente de Prisma
-│   ├── graphql.ts        # Configuración de GraphQL
-│   └── auth.ts           # Utilidades de autenticación
-├── prisma/               # Esquemas y migraciones de Prisma
-│   └── schema.prisma     # Esquema de la base de datos
-└── types/                # Tipos de TypeScript
+├── src/                   # Frontend (Next.js)
+│   ├── app/              # Next.js App Router
+│   │   ├── api/          # API Routes
+│   │   │   └── graphql/  # Endpoint GraphQL
+│   │   ├── blog/         # Página del blog
+│   │   ├── system-design/# Demo del sistema de diseño
+│   │   ├── components/   # Demo de componentes UI
+│   │   ├── globals.css   # Estilos globales
+│   │   ├── layout.tsx    # Layout principal
+│   │   └── page.tsx      # Página principal
+│   ├── components/       # Componentes reutilizables
+│   │   ├── ui/          # Componentes base del sistema de diseño
+│   │   ├── layout/      # Componentes de layout (Navigation, Footer)
+│   │   └── system-design/# Componentes del demo de diseño
+│   └── types/           # Tipos de TypeScript
+├── backend/              # Backend (GraphQL + Prisma)
+│   ├── config/          # Configuraciones
+│   ├── graphql/         # GraphQL (schema, resolvers, server)
+│   ├── lib/             # Utilidades (Prisma client)
+│   ├── prisma/          # Esquema de base de datos
+│   └── scripts/         # Scripts (seed, etc.)
+└── public/              # Archivos estáticos
 ```
 
 ## 🛠️ Instalación
@@ -92,11 +96,26 @@ src/
    ```
 
 3. **Configurar variables de entorno**
-   ```bash
-   cp .env.example .env.local
-   ```
    
-   Editar `.env.local` con tus configuraciones:
+   Crear archivo `.env` en la raíz del proyecto:
+   ```env
+   # Database
+   DATABASE_URL="mongodb://localhost:27017/website-template"
+   
+   # JWT
+   JWT_SECRET="your-super-secret-jwt-key-change-in-production"
+
+
+4. **Configurar base de datos**
+   ```bash
+   # Generar cliente Prisma
+   npm run db:generate
+   
+   # Sincronizar esquema con la base de datos
+   npm run db:push
+   
+   # Poblar con datos de ejemplo
+   npm run db:seed
    ```
    DATABASE_URL="mongodb://localhost:27017/website-template"
    JWT_SECRET="tu-secreto-jwt"
@@ -113,6 +132,12 @@ src/
    ```bash
    npm run dev
    ```
+
+   El servidor estará disponible en `http://localhost:3000`
+   - **Sitio web:** http://localhost:3000
+   - **GraphQL API:** http://localhost:3000/api/graphql
+   - **Sistema de diseño:** http://localhost:3000/system-design
+   - **Demo de componentes:** http://localhost:3000/components
 
 ## 🎨 Sistema de Diseño
 

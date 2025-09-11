@@ -12,122 +12,100 @@ import {
   Label,
   Button,
   Badge,
+  Input,
+  Select,
+  Textarea,
+  SocialIcon,
 } from '@/components/ui';
+import { Navigation, Footer } from '@/components/layout';
 
+const services = [
+  {
+    title: 'Consultoría Estratégica',
+    description: 'Desarrollamos estrategias personalizadas para impulsar el crecimiento de tu negocio.',
+    icon: '🎯',
+  },
+  {
+    title: 'Desarrollo Digital',
+    description: 'Creamos soluciones digitales innovadoras que conectan con tu audiencia.',
+    icon: '💻',
+  },
+  {
+    title: 'Marketing Integral',
+    description: 'Campañas de marketing efectivas que aumentan tu visibilidad y ventas.',
+    icon: '📈',
+  },
+  {
+    title: 'Soporte Continuo',
+    description: 'Acompañamiento permanente para asegurar el éxito a largo plazo.',
+    icon: '🤝',
+  },
+];
+
+const testimonials = [
+  {
+    name: 'María González',
+    company: 'Restaurante El Sabor',
+    text: 'Gracias a su trabajo, nuestras ventas aumentaron un 40% en solo 6 meses.',
+    rating: 5,
+  },
+  {
+    name: 'Carlos Ruiz',
+    company: 'Taller Mecánico Ruiz',
+    text: 'Profesionales excepcionales. Transformaron completamente nuestra presencia online.',
+    rating: 5,
+  },
+  {
+    name: 'Ana Martínez',
+    company: 'Boutique Elegancia',
+    text: 'Su estrategia de marketing nos ayudó a llegar a nuevos clientes de manera efectiva.',
+    rating: 5,
+  },
+];
+
+const team = [
+  {
+    name: 'Juan Pérez',
+    role: 'Director General',
+    description: '15 años de experiencia en estrategia empresarial y transformación digital.',
+    image: 'jp',
+  },
+  {
+    name: 'Laura Sánchez',
+    role: 'Directora de Marketing',
+    description: 'Especialista en marketing digital y campañas de alto impacto.',
+    image: 'ls',
+  },
+  {
+    name: 'Miguel Torres',
+    role: 'Desarrollador Senior',
+    description: 'Experto en tecnología y desarrollo de soluciones innovadoras.',
+    image: 'mt',
+  },
+];
+
+const stats = [
+  { number: '150+', label: 'Clientes Satisfechos' },
+  { number: '95%', label: 'Tasa de Éxito' },
+  { number: '5+', label: 'Años de Experiencia' },
+  { number: '24/7', label: 'Soporte Disponible' },
+];
 export default function LandingPage() {
-  const services = [
-    {
-      title: 'Consultoría Estratégica',
-      description: 'Desarrollamos estrategias personalizadas para impulsar el crecimiento de tu negocio.',
-      icon: '🎯',
-    },
-    {
-      title: 'Desarrollo Digital',
-      description: 'Creamos soluciones digitales innovadoras que conectan con tu audiencia.',
-      icon: '💻',
-    },
-    {
-      title: 'Marketing Integral',
-      description: 'Campañas de marketing efectivas que aumentan tu visibilidad y ventas.',
-      icon: '📈',
-    },
-    {
-      title: 'Soporte Continuo',
-      description: 'Acompañamiento permanente para asegurar el éxito a largo plazo.',
-      icon: '🤝',
-    },
-  ];
+  // Función helper para scroll suave con offset
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    const offset = 80; // Altura aproximada del navbar
+    if (element) {
+      const elementPosition = element.offsetTop - offset;
+      window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+    }
+  };
 
-  const testimonials = [
-    {
-      name: 'María González',
-      company: 'Restaurante El Sabor',
-      text: 'Gracias a su trabajo, nuestras ventas aumentaron un 40% en solo 6 meses.',
-      rating: 5,
-    },
-    {
-      name: 'Carlos Ruiz',
-      company: 'Taller Mecánico Ruiz',
-      text: 'Profesionales excepcionales. Transformaron completamente nuestra presencia online.',
-      rating: 5,
-    },
-    {
-      name: 'Ana Martínez',
-      company: 'Boutique Elegancia',
-      text: 'Su estrategia de marketing nos ayudó a llegar a nuevos clientes de manera efectiva.',
-      rating: 5,
-    },
-  ];
-
-  const team = [
-    {
-      name: 'Juan Pérez',
-      role: 'Director General',
-      description: '15 años de experiencia en estrategia empresarial y transformación digital.',
-      image: 'jp',
-    },
-    {
-      name: 'Laura Sánchez',
-      role: 'Directora de Marketing',
-      description: 'Especialista en marketing digital y campañas de alto impacto.',
-      image: 'ls',
-    },
-    {
-      name: 'Miguel Torres',
-      role: 'Desarrollador Senior',
-      description: 'Experto en tecnología y desarrollo de soluciones innovadoras.',
-      image: 'mt',
-    },
-  ];
-
-  const stats = [
-    { number: '150+', label: 'Clientes Satisfechos' },
-    { number: '95%', label: 'Tasa de Éxito' },
-    { number: '5+', label: 'Años de Experiencia' },
-    { number: '24/7', label: 'Soporte Disponible' },
-  ];
 
   return (
     <div className="min-h-screen bg-background">
       {/* Header/Navigation */}
-      <Card variant="elevated" className="rounded-none border-x-0 border-t-0 sticky top-0 z-50">
-        <CardContent>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center py-4">
-              <div className="flex items-center">
-                <Heading2>Mi Empresa</Heading2>
-              </div>
-              <nav className="hidden md:flex space-x-8">
-                <Button variant="ghost" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                  Inicio
-                </Button>
-                <Button variant="ghost" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
-                  Acerca de Nosotros
-                </Button>
-                <Button variant="ghost" onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}>
-                  Servicios
-                </Button>
-                <Button variant="ghost" onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}>
-                  Testimonios
-                </Button>
-                <Button variant="ghost" onClick={() => document.getElementById('team')?.scrollIntoView({ behavior: 'smooth' })}>
-                  Equipo
-                </Button>
-                <Button variant="ghost" onClick={() => window.location.href = '/blog'}>
-                  Blog
-                </Button>
-                <Button variant="ghost" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                  Contacto
-                </Button>
-              </nav>
-              <div className="flex items-center space-x-4">
-                <Button variant="outline" size="sm">Llamar</Button>
-                <Button variant="primary" size="sm">Cotizar</Button>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+      <Navigation onScrollToSection={scrollToSection} />
 
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32">
@@ -295,126 +273,146 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Card variant="elevated" className="text-center">
-            <CardContent>
-              <div className="py-12">
-                <Heading2 className="mb-6">¿Listo para Transformar tu Negocio?</Heading2>
-                <BodyLarge className="mb-8 max-w-2xl mx-auto">
-                  Contáctanos hoy y descubre cómo podemos ayudarte a alcanzar 
-                  tus objetivos empresariales.
-                </BodyLarge>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button variant="primary" size="lg">Solicitar Consulta Gratuita</Button>
-                  <Button variant="outline" size="lg">Ver Portfolio</Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+       {/* Contact Section */}
+       <section id="contact" className="py-20">
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="text-center mb-16">
+             <Badge variant="info" className="mb-4">Contacto</Badge>
+             <Heading2 className="mb-6">Hablemos Sobre tu Proyecto</Heading2>
+             <BodyLarge className="max-w-3xl mx-auto">
+               Estamos aquí para escuchar tus ideas y ayudarte a hacerlas realidad. 
+               Contáctanos y comencemos a trabajar juntos.
+             </BodyLarge>
+           </div>
+           
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+             {/* Contact Form */}
+             <Card variant="elevated">
+               <CardContent>
+                 <div className="py-8">
+                   <Heading3 className="mb-6">Envíanos un Mensaje</Heading3>
+                                       <form className="space-y-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <Input
+                          label="Nombre *"
+                          type="text"
+                          required
+                        />
+                        <Input
+                          label="Apellido *"
+                          type="text"
+                          required
+                        />
+                      </div>
+                      <Input
+                        label="Email *"
+                        type="email"
+                        required
+                      />
+                      <Input
+                        label="Teléfono"
+                        type="tel"
+                      />
+                      <Input
+                        label="Empresa"
+                        type="text"
+                      />
+                      <Select
+                        label="Servicio de Interés"
+                        options={[
+                          { value: "", label: "Selecciona un servicio" },
+                          { value: "consultoria", label: "Consultoría Estratégica" },
+                          { value: "desarrollo", label: "Desarrollo Digital" },
+                          { value: "marketing", label: "Marketing Integral" },
+                          { value: "soporte", label: "Soporte Continuo" },
+                          { value: "otro", label: "Otro" }
+                        ]}
+                      />
+                      <Textarea
+                        label="Mensaje *"
+                        placeholder="Cuéntanos sobre tu proyecto..."
+                        rows={4}
+                        required
+                      />
+                      <Button variant="primary" className="w-full">
+                        Enviar Mensaje
+                      </Button>
+                    </form>
+                 </div>
+               </CardContent>
+             </Card>
 
-      {/* Footer */}
-      <footer id="contact" className="bg-primary text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* Company Info */}
-            <div>
-              <Heading3 className="mb-4 text-white">Mi Empresa</Heading3>
-              <BodyMedium className="mb-4 text-gray-300">
-                Tu socio de confianza para el crecimiento empresarial. 
-                Transformamos ideas en resultados reales.
-              </BodyMedium>
-              <div className="flex space-x-4">
-                <Button variant="ghost" size="sm" className="text-white hover:bg-white hover:bg-opacity-20">
-                  📘
-                </Button>
-                <Button variant="ghost" size="sm" className="text-white hover:bg-white hover:bg-opacity-20">
-                  🐦
-                </Button>
-                <Button variant="ghost" size="sm" className="text-white hover:bg-white hover:bg-opacity-20">
-                  💼
-                </Button>
-                <Button variant="ghost" size="sm" className="text-white hover:bg-white hover:bg-opacity-20">
-                  📷
-                </Button>
-              </div>
-            </div>
+             {/* Contact Info */}
+             <div className="space-y-8">
+               <div>
+                 <Heading3 className="mb-6">Información de Contacto</Heading3>
+                 <div className="space-y-4">
+                   <div className="flex items-start">
+                     <span className="mr-3 text-xl">📍</span>
+                     <div>
+                       <span className="block text-sm font-semibold text-foreground">Dirección</span>
+                       <BodyMedium className="text-muted-foreground">
+                         Av. Principal 123<br />
+                         Centro, Ciudad<br />
+                         CP 12345
+                       </BodyMedium>
+                     </div>
+                   </div>
+                   <div className="flex items-center">
+                     <span className="mr-3 text-xl">📞</span>
+                     <div>
+                       <span className="block text-sm font-semibold text-foreground">Teléfono</span>
+                       <BodyMedium className="text-muted-foreground">+1 (555) 123-4567</BodyMedium>
+                     </div>
+                   </div>
+                   <div className="flex items-center">
+                     <span className="mr-3 text-xl">✉️</span>
+                     <div>
+                       <span className="block text-sm font-semibold text-foreground">Email</span>
+                       <BodyMedium className="text-muted-foreground">contacto@miempresa.com</BodyMedium>
+                     </div>
+                   </div>
+                   <div className="flex items-center">
+                     <span className="mr-3 text-xl">🕒</span>
+                     <div>
+                       <span className="block text-sm font-semibold text-foreground">Horarios</span>
+                       <BodyMedium className="text-muted-foreground">
+                         Lunes - Viernes: 9:00 - 18:00<br />
+                         Sábados: 9:00 - 14:00
+                       </BodyMedium>
+                     </div>
+                   </div>
+                 </div>
+               </div>
 
-            {/* Services */}
-            <div>
-              <Heading3 className="mb-4 text-white">Servicios</Heading3>
-              <ul className="space-y-2">
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto">Consultoría Estratégica</Button></li>
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto">Desarrollo Digital</Button></li>
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto">Marketing Integral</Button></li>
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto">Soporte Continuo</Button></li>
-              </ul>
-            </div>
+               <div>
+                 <Heading3 className="mb-6">Síguenos</Heading3>
+                 <div className="flex space-x-4">
+                   <Button variant="outline" size="sm" className="flex items-center">
+                     <SocialIcon platform="facebook" className="mr-2" />
+                     Facebook
+                   </Button>
+                   <Button variant="outline" size="sm" className="flex items-center">
+                     <SocialIcon platform="twitter" className="mr-2" />
+                     Twitter
+                   </Button>
+                   <Button variant="outline" size="sm" className="flex items-center">
+                     <SocialIcon platform="linkedin" className="mr-2" />
+                     LinkedIn
+                   </Button>
+                   <Button variant="outline" size="sm" className="flex items-center">
+                     <SocialIcon platform="instagram" className="mr-2" />
+                     Instagram
+                   </Button>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </section>
 
-            {/* Quick Links */}
-            <div>
-              <Heading3 className="mb-4 text-white">Enlaces Rápidos</Heading3>
-              <ul className="space-y-2">
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto">Acerca de Nosotros</Button></li>
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto">Portfolio</Button></li>
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto">Blog</Button></li>
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto">Carreras</Button></li>
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto">Políticas de Privacidad</Button></li>
-              </ul>
-            </div>
-
-            {/* Contact Info */}
-            <div>
-              <Heading3 className="mb-4 text-white">Contacto</Heading3>
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <span className="mr-2">📍</span>
-                  <BodyMedium className="text-gray-300">
-                    Av. Principal 123<br />
-                    Centro, Ciudad<br />
-                    CP 12345
-                  </BodyMedium>
-                </div>
-                <div className="flex items-center">
-                  <span className="mr-2">📞</span>
-                  <BodyMedium className="text-gray-300">+1 (555) 123-4567</BodyMedium>
-                </div>
-                <div className="flex items-center">
-                  <span className="mr-2">✉️</span>
-                  <BodyMedium className="text-gray-300">contacto@miempresa.com</BodyMedium>
-                </div>
-                <div className="flex items-center">
-                  <span className="mr-2">🕒</span>
-                  <BodyMedium className="text-gray-300">Lun - Vie: 9:00 - 18:00</BodyMedium>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Footer */}
-          <div className="border-t border-white border-opacity-20 mt-12 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <BodySmall className="text-gray-300">
-                © 2024 Mi Empresa. Todos los derechos reservados.
-              </BodySmall>
-              <div className="flex space-x-6 mt-4 md:mt-0">
-                <Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto text-sm">
-                  Términos de Servicio
-                </Button>
-                <Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto text-sm">
-                  Política de Privacidad
-                </Button>
-                <Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto text-sm">
-                  Cookies
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+                     {/* Footer */}
+       <Footer />
     </div>
   );
 }

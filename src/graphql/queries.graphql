@@ -1,0 +1,59 @@
+# Queries para blogs
+query GetPublishedBlogs($skip: Int, $take: Int, $search: String) {
+  publishedBlogs(skip: $skip, take: $take, search: $search) {
+    id
+    title
+    slug
+    excerpt
+    published
+    publishedAt
+    tags
+    createdAt
+    author {
+      id
+      email
+      name
+    }
+  }
+}
+
+query GetBlogBySlug($slug: String!) {
+  blogBySlug(slug: $slug) {
+    id
+    title
+    slug
+    content
+    excerpt
+    published
+    publishedAt
+    tags
+    createdAt
+    updatedAt
+    author {
+      id
+      email
+      name
+    }
+  }
+}
+
+# Queries para usuarios (requieren autenticación)
+query GetUsers($skip: Int, $take: Int) {
+  users(skip: $skip, take: $take) {
+    id
+    email
+    name
+    role
+    createdAt
+  }
+}
+
+query GetUser($id: String!) {
+  user(id: $id) {
+    id
+    email
+    name
+    role
+    createdAt
+  }
+}

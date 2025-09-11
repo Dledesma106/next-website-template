@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Colores Semánticos Wireframe - Definidos directamente
+        // Colores Semánticos Wireframe - Usando variables CSS para modo oscuro
         primary: '#171717',      // Gris muy oscuro
         secondary: '#495057',    // Gris medio
         accent: '#212529',       // Gris oscuro
@@ -18,10 +18,14 @@ const config: Config = {
         error: '#212529',        // Gris oscuro
         destructive: '#171717',  // Gris muy oscuro
         info: '#adb5bd',         // Gris claro
-        surface: '#e9ecef',      // Gris muy claro
-        background: '#f8f9fa',   // Gris casi blanco
-        muted: '#dee2e6',        // Gris claro
-        border: '#ced4da',       // Gris medio-claro
+        surface: 'var(--surface)',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        card: 'var(--card)',
+        'card-foreground': 'var(--card-foreground)',
+        border: 'var(--border)',
+        muted: 'var(--muted)',
+        'muted-foreground': 'var(--muted-foreground)',
       },
     },
   },

@@ -1,0 +1,129 @@
+mutation Login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+        token
+        user {
+            id
+            email
+            name
+            role
+            createdAt
+            updatedAt
+        }
+    }
+}
+
+mutation CreateUser($input: CreateUserInput!) {
+    createUser(input: $input) {
+        success
+        message
+        user {
+            id
+            email
+            name
+            role
+            createdAt
+            updatedAt
+        }
+    }
+}
+
+mutation UpdateUser($id: String!, $input: UpdateUserInput!) {
+    updateUser(id: $id, input: $input) {
+        success
+        message
+        user {
+            id
+            email
+            name
+            role
+            createdAt
+            updatedAt
+        }
+    }
+}
+
+mutation DeleteUser($id: String!) {
+    deleteUser(id: $id) {
+        success
+        message
+        user {
+            id
+            email
+            name
+            role
+        }
+    }
+}
+
+# Mutations para blogs (requieren autenticación)
+mutation CreateBlog($input: CreateBlogInput!) {
+    createBlog(input: $input) {
+        success
+        message
+        blog {
+            id
+            title
+            slug
+            content
+            excerpt
+            published
+            publishedAt
+            tags
+            createdAt
+            author {
+                id
+                email
+                name
+            }
+        }
+    }
+}
+
+mutation UpdateBlog($id: String!, $input: UpdateBlogInput!) {
+    updateBlog(id: $id, input: $input) {
+        success
+        message
+        blog {
+            id
+            title
+            slug
+            content
+            excerpt
+            published
+            publishedAt
+            tags
+            updatedAt
+            author {
+                id
+                email
+                name
+            }
+        }
+    }
+}
+
+mutation PublishBlog($id: String!) {
+    publishBlog(id: $id) {
+        success
+        message
+        blog {
+            id
+            title
+            published
+            publishedAt
+        }
+    }
+}
+
+mutation UnpublishBlog($id: String!) {
+    unpublishBlog(id: $id) {
+        success
+        message
+        blog {
+            id
+            title
+            published
+            publishedAt
+        }
+    }
+}

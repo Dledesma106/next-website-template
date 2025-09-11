@@ -12,6 +12,7 @@ import {
   Button,
   Badge,
 } from '@/components/ui';
+import { Navigation, Footer } from '@/components/layout';
 
 export default function BlogPage() {
   const blogPosts = [
@@ -92,46 +93,7 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header/Navigation */}
-      <Card variant="elevated" className="rounded-none border-x-0 border-t-0 sticky top-0 z-50">
-        <CardContent>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center py-4">
-              <div className="flex items-center">
-                <Button variant="ghost" onClick={() => window.location.href = '/'}>
-                  <Heading2>Mi Empresa</Heading2>
-                </Button>
-              </div>
-              <nav className="hidden md:flex space-x-8">
-                <Button variant="ghost" onClick={() => window.location.href = '/'}>
-                  Inicio
-                </Button>
-                <Button variant="ghost" onClick={() => window.location.href = '/#about'}>
-                  Acerca de Nosotros
-                </Button>
-                <Button variant="ghost" onClick={() => window.location.href = '/#services'}>
-                  Servicios
-                </Button>
-                <Button variant="ghost" onClick={() => window.location.href = '/#testimonials'}>
-                  Testimonios
-                </Button>
-                <Button variant="ghost" onClick={() => window.location.href = '/#team'}>
-                  Equipo
-                </Button>
-                <Button variant="primary">
-                  Blog
-                </Button>
-                <Button variant="ghost" onClick={() => window.location.href = '/#contact'}>
-                  Contacto
-                </Button>
-              </nav>
-              <div className="flex items-center space-x-4">
-                <Button variant="outline" size="sm">Llamar</Button>
-                <Button variant="primary" size="sm">Cotizar</Button>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+      <Navigation showInternalLinks={false} />
 
       {/* Hero Section */}
       <section className="py-20 lg:py-32 bg-muted">
@@ -291,92 +253,7 @@ export default function BlogPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* Company Info */}
-            <div>
-              <Heading3 className="mb-4 text-white">Mi Empresa</Heading3>
-              <BodyMedium className="mb-4 text-gray-300">
-                Tu socio de confianza para el crecimiento empresarial. 
-                Transformamos ideas en resultados reales.
-              </BodyMedium>
-              <div className="flex space-x-4">
-                <Button variant="ghost" size="sm" className="text-white hover:bg-white hover:bg-opacity-20">
-                  📘
-                </Button>
-                <Button variant="ghost" size="sm" className="text-white hover:bg-white hover:bg-opacity-20">
-                  🐦
-                </Button>
-                <Button variant="ghost" size="sm" className="text-white hover:bg-white hover:bg-opacity-20">
-                  💼
-                </Button>
-                <Button variant="ghost" size="sm" className="text-white hover:bg-white hover:bg-opacity-20">
-                  📷
-                </Button>
-              </div>
-            </div>
-
-            {/* Blog Categories */}
-            <div>
-              <Heading3 className="mb-4 text-white">Categorías</Heading3>
-              <ul className="space-y-2">
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto">Marketing Digital</Button></li>
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto">Transformación Digital</Button></li>
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto">Desarrollo Web</Button></li>
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto">Diseño UX/UI</Button></li>
-              </ul>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <Heading3 className="mb-4 text-white">Enlaces Rápidos</Heading3>
-              <ul className="space-y-2">
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto" onClick={() => window.location.href = '/'}>Inicio</Button></li>
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto" onClick={() => window.location.href = '/#about'}>Acerca de Nosotros</Button></li>
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto" onClick={() => window.location.href = '/#services'}>Servicios</Button></li>
-                <li><Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto" onClick={() => window.location.href = '/#contact'}>Contacto</Button></li>
-              </ul>
-            </div>
-
-            {/* Contact Info */}
-            <div>
-              <Heading3 className="mb-4 text-white">Contacto</Heading3>
-              <div className="space-y-3">
-                <div className="flex items-center">
-                  <span className="mr-2">📞</span>
-                  <BodyMedium className="text-gray-300">+1 (555) 123-4567</BodyMedium>
-                </div>
-                <div className="flex items-center">
-                  <span className="mr-2">✉️</span>
-                  <BodyMedium className="text-gray-300">blog@miempresa.com</BodyMedium>
-                </div>
-                <div className="flex items-center">
-                  <span className="mr-2">🕒</span>
-                  <BodyMedium className="text-gray-300">Lun - Vie: 9:00 - 18:00</BodyMedium>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Footer */}
-          <div className="border-t border-white border-opacity-20 mt-12 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <BodySmall className="text-gray-300">
-                © 2024 Mi Empresa. Todos los derechos reservados.
-              </BodySmall>
-              <div className="flex space-x-6 mt-4 md:mt-0">
-                <Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto text-sm">
-                  Términos de Servicio
-                </Button>
-                <Button variant="ghost" className="text-gray-300 hover:text-white p-0 h-auto text-sm">
-                  Política de Privacidad
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

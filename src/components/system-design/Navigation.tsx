@@ -1,17 +1,20 @@
+import { Button } from "../ui";
+import { BodyMedium, Heading2, Heading3 } from "../ui/Typography";
+
 export default function Navigation() {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Navegación</h2>
-        <p className="text-gray-600 mb-6">
+        <Heading2 className="text-2xl font-bold text-gray-900 mb-4">Navegación</Heading2>
+        <BodyMedium className="text-gray-600 mb-6">
           Componentes de navegación y menús para estructurar la información
           y facilitar la navegación en la aplicación.
-        </p>
+        </BodyMedium>
       </div>
 
       {/* Navegación Principal */}
       <div>
-        <h3 className="text-lg font-semibold text-gray-800 mb-4">Navegación Principal</h3>
+        <Heading3 className="text-lg font-semibold text-gray-800 mb-4">Navegación Principal</Heading3>
         <div className="space-y-4">
           {/* Header con Logo y Menú */}
           <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
@@ -28,13 +31,13 @@ export default function Navigation() {
                 <a href="#" className="text-gray-600 hover:text-gray-900">Contacto</a>
               </nav>
               <div className="flex items-center space-x-4">
-                <button className="text-gray-600 hover:text-gray-900">
+                <Button className="text-gray-600 hover:text-gray-900">
                   <span className="sr-only">Buscar</span>
                   🔍
-                </button>
-                <button className="px-4 py-2 text-sm font-medium bg-gray-900 text-white rounded-md hover:bg-gray-800">
+                </Button>
+                <Button className="px-4 py-2 text-sm font-medium bg-gray-900 text-white rounded-md hover:bg-gray-800">
                   Iniciar Sesión
-                </button>
+                </Button>
               </div>
             </div>
           </div>

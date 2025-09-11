@@ -50,6 +50,12 @@ export const Heading4 = ({ children, className = '' }: TypographyProps) => (
   </h4>
 );
 
+export const Heading5 = ({ children, className = '' }: TypographyProps) => (
+  <h5 className={`text-base font-medium text-foreground ${className}`}>
+    {children}
+  </h5>
+);
+
 // Body Components
 export const BodyLarge = ({ children, className = '' }: TypographyProps) => (
   <p className={`text-lg text-muted-foreground leading-relaxed ${className}`}>
